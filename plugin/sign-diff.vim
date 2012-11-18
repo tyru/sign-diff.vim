@@ -6,7 +6,7 @@ scriptencoding utf-8
 " Name: sign-diff
 " Version: 0.0.3
 " Author:  tyru <tyru.exe+vim@gmail.com>
-" Last Change: 2010-10-24.
+" Last Change: 2012-11-18.
 " License: Distributable under the same terms as Vim itself (see :help license)
 "
 " GetLatestVimScripts: 2712 1 :AutoInstall: sign-diff
@@ -149,7 +149,7 @@ let features = [
 for feat in features
     if !eval(feat)
         echohl WarningMsg
-        echo printf('need %s. script is not loaded.', feat)
+        echomsg printf('need %s. script is not loaded.', feat)
         echohl None
 
         finish
