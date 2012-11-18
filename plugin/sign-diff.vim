@@ -140,23 +140,23 @@ endif
 let g:loaded_sign_diff = 1
 " }}}
 " Check Some Features {{{
-let features = [
-    \ "has('signs')",
-    \ "has('diff')",
-    \ "exists('*mkdir') || executable('mkdir')",
-    \ "executable('diff')"
-\ ]
-for feat in features
-    if !eval(feat)
-        echohl WarningMsg
-        echomsg printf('need %s. script is not loaded.', feat)
-        echohl None
+function! s:check_features()
+    for feat in [
+    \   "has('signs')",
+    \   "has('diff')",
+    \   "exists('*mkdir') || executable('mkdir')",
+    \   "executable('diff')"
+    \]
+        if !eval(feat)
+            echohl WarningMsg
+            echomsg printf('need %s. script is not loaded.', feat)
+            echohl None
+            finish
+        endif
+    endfor
+endfunction
+call s:check_features()
 
-        finish
-    endif
-endfor
-
-unlet features
 " }}}
 " Saving 'cpoptions' {{{
 let s:save_cpo = &cpo
